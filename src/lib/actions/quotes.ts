@@ -231,6 +231,10 @@ export async function createQuoteVersionAction(id: string) {
 
   if (insertError || !newQuote) {
     console.error('createVersion insert error:', insertError)
+    // Unique constraint violation — another version was created simultaneously
+    if (insertError?.code === '23505') {
+      return { error: 'A new version was just created. Please refresh and try again.' }
+    }
     return { error: 'Failed to create new version.' }
   }
 

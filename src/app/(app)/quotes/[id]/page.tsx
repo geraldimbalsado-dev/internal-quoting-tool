@@ -79,6 +79,7 @@ export default async function QuoteDetailPage({ params }: PageProps) {
     .select('*, user:profiles(id, email, full_name, role, created_at)')
     .eq('quote_id', id)
     .order('created_at', { ascending: false })
+    .limit(100)
 
   return (
     <div className="p-8 max-w-5xl">

@@ -11,7 +11,10 @@ export const dynamic = 'force-dynamic'
 
 async function fetchAsBase64(url: string): Promise<string | null> {
   try {
-    const res = await fetch(url)
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 8000)
+    const res = await fetch(url, { signal: controller.signal })
+    clearTimeout(timeout)
     if (!res.ok) return null
     const buffer = await res.arrayBuffer()
     const base64 = Buffer.from(buffer).toString('base64')
