@@ -32,7 +32,7 @@ export async function updateSession(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // Public routes that don't need auth
-  const publicPaths = ['/login', '/review', '/403']
+  const publicPaths = ['/login', '/signup', '/review', '/403']
   const isPublicPath = publicPaths.some((p) => pathname.startsWith(p))
 
   if (!user && !isPublicPath) {
@@ -41,7 +41,7 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  if (user && pathname === '/login') {
+  if (user && (pathname === '/login' || pathname === '/signup')) {
     const url = request.nextUrl.clone()
     url.pathname = '/dashboard'
     return NextResponse.redirect(url)
