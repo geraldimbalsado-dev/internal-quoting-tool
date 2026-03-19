@@ -1,6 +1,5 @@
 import { LoginForm } from './login-form'
 import { Briefcase } from 'lucide-react'
-import Link from 'next/link'
 
 export const dynamic = 'force-dynamic'
 
@@ -20,13 +19,6 @@ export default function LoginPage() {
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
           <LoginForm />
         </div>
-
-        <p className="text-center text-sm text-slate-500 mt-4">
-          Don&apos;t have an account?{' '}
-          <Link href="/signup" className="text-blue-600 hover:underline font-medium">
-            Sign up
-          </Link>
-        </p>
       </div>
     </div>
   )
