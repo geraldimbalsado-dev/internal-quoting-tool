@@ -1,30 +1,29 @@
-import { LoginForm } from './login-form'
+import { SignupForm } from './signup-form'
 import { Briefcase } from 'lucide-react'
 import Link from 'next/link'
 
 export const dynamic = 'force-dynamic'
 
-export default function LoginPage() {
+export default function SignupPage() {
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
       <div className="w-full max-w-sm">
-        {/* Logo */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-600 rounded-xl mb-4">
             <Briefcase className="h-6 w-6 text-white" />
           </div>
           <h1 className="text-2xl font-bold text-slate-900">QuoteTool</h1>
-          <p className="text-slate-500 mt-1 text-sm">Sign in to your account</p>
+          <p className="text-slate-500 mt-1 text-sm">Create your account</p>
         </div>
 
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-          <LoginForm />
+          <SignupForm />
         </div>
 
         <p className="text-center text-sm text-slate-500 mt-4">
-          Don&apos;t have an account?{' '}
-          <Link href="/signup" className="text-blue-600 hover:underline font-medium">
-            Sign up
+          Already have an account?{' '}
+          <Link href="/login" className="text-blue-600 hover:underline font-medium">
+            Sign in
           </Link>
         </p>
       </div>
