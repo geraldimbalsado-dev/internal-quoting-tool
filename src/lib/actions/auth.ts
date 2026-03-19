@@ -51,7 +51,7 @@ export async function signUp(formData: FormData) {
   }
 
   const supabase = await createClient()
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email: parsed.data.email,
     password: parsed.data.password,
     options: {
@@ -61,6 +61,11 @@ export async function signUp(formData: FormData) {
 
   if (error) {
     return { error: error.message }
+  }
+
+  // If session is null, email confirmation is required
+  if (!data.session) {
+    return { error: 'Please check your email to confirm your account, then sign in.' }
   }
 
   revalidatePath('/', 'layout')
